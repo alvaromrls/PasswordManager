@@ -1,0 +1,10 @@
+- [x] La clase `PasswordGenerator` se puede instanciar correctamente.
+- [x] La clase puede inicializar los atributos correctamente a través del constructor.
+- [x] La clase puede generar un conjunto de caracteres (pool) básico de letras minúsculas.
+- [x] La clase puede incluir caracteres en mayúsculas en el conjunto de caracteres.
+- [x] La clase puede incluir números en el conjunto de caracteres.
+- [x] La clase puede incluir caracteres especiales en el conjunto de caracteres.
+- [x] La clase genera una contraseña de longitud correcta.
+- [x] La clase genera una contraseña que contiene caracteres del conjunto especificado.
+- [x] La clase genera una contraseña aleatoria, con caracteres no predecibles.
+- [x] La clase puede manejar correctamente una longitud de contraseña negativa (debe arrojar un error o manejarlo de manera adecuada). O longitud minima.
