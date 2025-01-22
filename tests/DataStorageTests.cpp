@@ -184,3 +184,27 @@ TEST_F(DataStorageTestWithData, DeleteUser)
     DataStorage storage{invented_file};
     ASSERT_FALSE(storage.userExists("user2"));
 }
+
+TEST_F(DataStorageTestWithData, DeleteNonExistingUser)
+{
+    // Crear y cerrar el almacenamiento, que debería crear un archivo vacío
+    DataStorage storage{invented_file};
+    storage.deleteUser("userNotInFile");
+    // No debería causar ningún error ni modificar el archivo
+    ASSERT_FALSE(storage.userExists("userNotInFile"));
+}
+
+TEST_F(DataStorageTestWithData, UpdateUserData)
+{
+    // Crear y cerrar el almacenamiento
+    DataStorage storage{invented_file};
+
+    // Cambiar los datos del usuario
+    UserData updated_user{"newpassword", "newsalt", {{"site1", "newpass", "newsalt"}}};
+    storage.saveUserData("user1", updated_user);
+
+    // Leer el archivo y verificar que los datos han sido actualizados
+    auto updated_data = storage.getUserData("user1").value();
+    ASSERT_EQ(updated_data.password, "newpassword");
+    ASSERT_EQ(updated_data.password_salt, "newsalt");
+}
